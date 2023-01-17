@@ -1,0 +1,25 @@
+<mat-toolbar color="Secondary">
+  (POC)
+  <div class="flex-stretch"></div>
+  <mat-icon class="mr-8">brightness_5</mat-icon>
+  <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+  </mat-slide-toggle>
+  <mat-icon>bedtime</mat-icon>
+</mat-toolbar>
+
+<div id="container">
+  <div fxflex="" fxlayout="" style="flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 1e-09px;">
+    <div class="column left" fxlayoutalign="center center">
+      A</div>
+    <div class="column right" fxlayoutalign="center center">
+      <div class="my-google-map" style="width: 100%; height: 100%;">
+        <google-map width="100%" height="100%" [options]="mapOptions">
+          <map-marker #markerElem="mapMarker" *ngFor="let marker of markers" [position]="marker.position"
+            [label]="marker.label" [title]="marker.title" [options]="marker.options"
+           >
+          </map-marker>
+        </google-map>
+      </div>
+    </div>
+  </div>
+</div>

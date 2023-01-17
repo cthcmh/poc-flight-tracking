@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="24px" viewBox="0 0 28 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>notifications</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" fill-rule="nonzero" stroke="#FFFFFF">
+            <g id="notifications" transform="translate(1.000000, 1.000000)">
+                <path d="M12.48,2.397 L12.48,21.932 C11.82,21.014 10.437,19.76 7.8,19.76 C4.892,19.76 1.04,21.84 1.04,21.84 L8.8817842e-16,21.84 L8.8817842e-16,3.12 C8.8817842e-16,3.12 1.04,-2.66453526e-15 6.24,-2.66453526e-15 C9.816,-2.66453526e-15 11.67,1.475 12.48,2.397 Z M13.52,2.397 C14.33,1.475 16.184,-8.8817842e-16 19.76,-8.8817842e-16 C24.96,-8.8817842e-16 26,3.12 26,3.12 L26,21.84 L24.96,21.84 C24.96,21.84 21.41,19.76 18.2,19.76 C15.563,19.76 14.18,21.014 13.52,21.932 L13.52,2.397 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
