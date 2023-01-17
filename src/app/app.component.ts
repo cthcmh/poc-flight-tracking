@@ -25,19 +25,20 @@ export class AppComponent implements OnInit {
 
   markers = []  as  any;
 
-  svgMarker = {
-    path: this.aircraftSvgImagePath,
-    fillColor: "green",
-    fillOpacity: 0.6,
-    strokeWeight: 0,
-    rotation: 45,
-    scale: .05,
-    anchor: new google.maps.Point(0, 20),
-  };
+  // svgMarker = {
+  //   path: this.aircraftSvgImagePath,
+  //   fillColor: "green",
+  //   fillOpacity: 0.6,
+  //   strokeWeight: 0,
+  //   rotation: 45,
+  //   scale: .05,
+  //   anchor: new google.maps.Point(0, 20),
+  // };
 
   ngOnInit(): void {
     this.defaultDarkMode();
-    this.addMarker();
+    this.addAircraft(29.64, -95.27, 'NCOLT3', 10);
+    this.addAircraft(29.64, -95.261, 'NCOLT2', 50);
   }
 
   myStyles = [
@@ -59,21 +60,28 @@ export class AppComponent implements OnInit {
     styles: this.myStyles
   }
 
-  //markers: google.maps.LatLngLiteral[] = [];
-  addMarker() {
+  addAircraft(lat: number, long: number, tail: string, rotation: number) {
+    var svgMarker = {
+      path: this.aircraftSvgImagePath,
+      fillColor: "green",
+      fillOpacity: 0.6,
+      strokeWeight: 0,
+      rotation: rotation,
+      scale: .05,
+      anchor: new google.maps.Point(0, 20),
+    };
     this.markers.push({
       position: {
-        lat: 29.64,
-        lng: -95.27,
+        lat: lat,
+        lng: long,
       },
       label: {
         color: 'blue',
-        text: 'NCOLT45',
+        text: tail,
       },
       title: 'Marker title ' + (this.markers.length + 1),
       options: {
-        //icon: '../assets/img/icons/icon-aircraft-48.png'
-        icon: this.svgMarker
+        icon: svgMarker
       },
     });
   }
@@ -107,6 +115,10 @@ export class AppComponent implements OnInit {
       this.overlay.getContainerElement().classList.remove(darkClassName);
     }
   });
+
+  
+
+
 }
 
 }
