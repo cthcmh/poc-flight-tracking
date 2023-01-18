@@ -1,5 +1,5 @@
 import { Component, ViewChild, HostBinding, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
@@ -37,8 +37,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.defaultDarkMode();
-    this.addAircraft(29.64, -95.27, 'NCOLT3', 10);
-    this.addAircraft(29.64, -95.261, 'NCOLT2', 50);
+    this.followFlights();
   }
 
   myStyles = [
@@ -60,6 +59,38 @@ export class AppComponent implements OnInit {
     styles: this.myStyles
   }
 
+  async followFlights() {
+    this.addAircraft(29.64, -95.27, 'NCOLT3', 10);
+    await this.sleep(1000);
+    this.removeAllAircraft();
+    this.addAircraft(29.64, -95.271, 'NCOLT3', 10);
+    await this.sleep(1000);
+    this.removeAllAircraft();
+    this.addAircraft(29.64, -95.272, 'NCOLT3', 10);
+    await this.sleep(1000);
+    this.removeAllAircraft();
+    this.addAircraft(29.64, -95.273, 'NCOLT3', 10);
+    await this.sleep(1000);
+    this.removeAllAircraft();
+    this.addAircraft(29.64, -95.274, 'NCOLT3', 10);
+    await this.sleep(1000);
+    this.removeAllAircraft();
+    this.addAircraft(29.64, -95.275, 'NCOLT3', 10);
+    await this.sleep(1000);
+    this.removeAllAircraft();
+    this.addAircraft(29.64, -95.276, 'NCOLT3', 10);
+    await this.sleep(1000);
+    //this.addAircraft(29.64, -95.261, 'NCOLT2', 50);
+    // this.addAircraft(29.6432, -95.2737, 'N12345', 20);
+    // this.addAircraft(29.6433, -95.26124, 'N100X3', 80);
+    // this.addAircraft(29.6435, -95.2738, 'N774GX', 120);
+    // this.addAircraft(29.6447, -95.26139, 'N400HL', 10);
+  }
+
+  async sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
   addAircraft(lat: number, long: number, tail: string, rotation: number) {
     var svgMarker = {
       path: this.aircraftSvgImagePath,
@@ -79,29 +110,23 @@ export class AppComponent implements OnInit {
         color: 'blue',
         text: tail,
       },
+      map: this.map,
       title: 'Marker title ' + (this.markers.length + 1),
       options: {
         icon: svgMarker
       },
     });
+     // Push marker to markers array
   }
 
+  removeAllAircraft() {
+    for (var i=0; i<this.markers.length; i++) {
+      this.markers[i].map = null;
+    }
+    this.markers = null;
+    this.markers = [];
+  }
 
-//   marker1: google.maps.LatLngLiteral = {
-//     lat: 29.6457998,
-//     lng: -95.2772316
-// };
-
-// openInfo(marker: MapMarker, content: string) {
-//   this.infoContent = content;
-//   this.info.open(marker)
-// }
-  // marker = new google.maps.Marker({
-  //   position: this.marker1,
-  //   map: this.map,
-  //   title: 'markers'
-  // });
-  //this.markerPositions.push(this.marker1.toJSON());
 
   /*  Default to Dark mode */
 
@@ -116,7 +141,7 @@ export class AppComponent implements OnInit {
     }
   });
 
-  
+
 
 
 }
